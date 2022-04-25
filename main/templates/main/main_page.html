@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <title>Generator</title>
+</head>
+<style>
+    h1{
+        margin-left: 12em;
+        color: rebeccapurple;
+    }
+    #gen_pass{
+        margin-left: 36em;
+        margin-top: 5em;
+    }
+    #check_group{
+        margin-top: 5em;
+        margin-left: 70em;
+    }
+</style>
+<body>
+    <h1>
+        Сгенерированный пароль:
+    </h1>
+    <div id="gen_pass">
+        <h2> {{ gen }} </h2>
+    </div>
+    <div class="list-group" id="check_group">
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Use hegh register
+        </label>
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" data-href-template="">
+            Use math symbol
+        </label>
+        <label class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Use special symbol
+        </label>
+    </div>
+
+    {% for password in passwords %}
+        <div class="card w-50">
+            <div class="card-body">
+                <h5 class="card-title">generated befor pass</h5>
+                <p class="card-text">{{ password }}</p>
+                <a href="#" class="btn btn-primary">Go url</a>
+            </div>
+        </div>
+    {% endfor %}
+
+</body>
+</html>
