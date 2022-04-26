@@ -43,16 +43,3 @@
             Use special symbol
         </label>
     </div>
-
-    {% for password in passwords %}
-        <div class="card w-50">
-            <div class="card-body">
-                <p class="card-text">{{ password.password }}</p>
-                <p class="card-text">{{ password.url }}</p>
-                <a href="{{ password.url }}" class="btn btn-primary"  target="_blank">Go url</a>
-            </div>
-        </div>
-    {% endfor %}
-
-</body>
-</html>

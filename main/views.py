@@ -1,16 +1,15 @@
 from django.shortcuts import render
 
 from main.generate import gen
-from main.basa import get_data_from_json
+from .models import Password
 
 
 def show(request):
+    passwords = Password.objects.all()
 
-    gen_pass = get_data_from_json("user.json").split(" ")
     data = {
         'gen': gen(),
-        'passwords': gen_pass
+        'passwords': passwords
     }
+
     return render(request, 'main/main_page.html', data)
-
-

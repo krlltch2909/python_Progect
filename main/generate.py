@@ -1,8 +1,7 @@
-import json
 import random
 
 from main import options
-from main.basa import get_data_from_json
+from .basa import set_data_in_password_base
 
 
 def gen():
@@ -20,16 +19,8 @@ def gen():
 
     if options.high_register is True:
         rez = to_high_register(rez)
+    set_data_in_password_base(url="https://github.com/krlltch2909", password=rez, user_id=1)
 
-    string = get_data_from_json("user.json")
-    mass = string.split(" ")
-    for password in mass:
-        if password == rez:
-            gen()
-            break
-
-    with open('user.json', 'w') as file:
-        json.dump(rez + " " + string, file)
     return rez
 
 
@@ -42,5 +33,4 @@ def to_high_register(string):
             rez += f
     return rez
 
-
-#print(gen())
+# print(gen())
