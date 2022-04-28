@@ -1,11 +1,30 @@
 {% extends 'main/base.html' %}
 
+{% block style %}
+    #login{
+        color: crimson;
+        width:  5em;
+    }
+{% endblock %}
+
+{% block title %}
+     user_{{ user.login }}
+{% endblock %}
+
+
+{% block accaunt %}
     {% for password in passwords %}
         <div class="card w-50">
             <div class="card-body">
+                <p class="card-text">{{ password.user }}</p>
                 <p class="card-text">{{ password.password }}</p>
                 <p class="card-text">{{ password.url }}</p>
                 <a href="{{ password.url }}" class="btn btn-primary"  target="_blank">Go url</a>
             </div>
         </div>
     {% endfor %}
+{% endblock %}
+
+{% block login %}
+    <h2 id = "login">{{ user.login }}</h2>
+{% endblock %}

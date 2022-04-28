@@ -1,7 +1,6 @@
 import random
 
 from main import options
-from .basa import set_data_in_password_base
 
 
 def gen():
@@ -11,7 +10,6 @@ def gen():
         abc += "!:;.,'|[]{}"
     if options.math_symbol is True:
         abc += "+-=/*<>"
-
     for i in range(options.length):
         rez += abc[random.randint(0, len(abc) - 1)]
 
@@ -19,8 +17,6 @@ def gen():
 
     if options.high_register is True:
         rez = to_high_register(rez)
-    set_data_in_password_base(url="https://github.com/krlltch2909", password=rez, user_id=1)
-
     return rez
 
 
@@ -32,5 +28,3 @@ def to_high_register(string):
         else:
             rez += f
     return rez
-
-# print(gen())

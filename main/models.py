@@ -13,7 +13,7 @@ class Password(models.Model):
 
 
 class User(models.Model):
-    login = models.CharField(max_length=100, db_index=True)
+    login = models.CharField(max_length=100, db_index=True, unique=True)
     password = models.CharField(max_length=100, db_index=True)
 
     def __str__(self):
