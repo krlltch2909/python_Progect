@@ -1,3 +1,6 @@
+body{
+    background: darkgrey;
+}
 h1{
     margin-left: 12em;
     color: rebeccapurple;
@@ -9,4 +12,6 @@ h1{
 #check_group{
     margin-top: 5em;
     margin-left: 70em;
+}
+#navigation{
 }

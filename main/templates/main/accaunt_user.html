@@ -1,16 +1,21 @@
 {% extends 'main/base.html' %}
 
-{% block style %}
-    #login{
-        color: crimson;
-        width:  5em;
-    }
-{% endblock %}
-
 {% block title %}
      user_{{ user.login }}
 {% endblock %}
 
+{% block login %}
+    <nav aria-label="breadcrumb" id="navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" ><a href="{% url 'main_page' %}">Main_page</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ user.login }}</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block buttons %}
+    <a href="{{user.get_absolute_url}}" class="btn btn-danger">generate </a>
+{% endblock %}
 
 {% block accaunt %}
     {% for password in passwords %}
@@ -25,6 +30,3 @@
     {% endfor %}
 {% endblock %}
 
-{% block login %}
-    <h2 id = "login">{{ user.login }}</h2>
-{% endblock %}

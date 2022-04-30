@@ -7,4 +7,4 @@ def set_data_in_password_base(url, password, user_id):
 
 
 def set_data_in_user_base(login, password):
-    user = User.objects.create(password=password, login=login)
+    User.objects.create(password=password, login=login)

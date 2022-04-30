@@ -1,16 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views import View
+
 from main.generate import gen
 from .models import Password, User
 from .user_generator import usr_genert
 from .options import grt_options
-from .user_worker import add_new_user
+from .form import RegistrationForm
 
 
 # метод для генерации пароля НЕ авторизированного пользователя
 def show(request):
     try:
-        user = add_new_user('root', 'qwerty')
-        user = add_new_user('root2', 'qwerty2')
+        User.objects.create(login='root', password='qwerty')
+        User.objects.creat(login ='root2',password='qwerty2')
     except:
         pass
     users = User.objects.all()
@@ -23,7 +25,8 @@ def show(request):
 
 
 # метод для генерации пароля авторизированного пользователя(новый, вызывается при входе в аккаунт)
-def show_registrated_user1(request, login):
+
+def show_registrated_user(request, login):
     user = User.objects.get(login=login)
     passwords = Password.objects.filter(user=user.id)
     data = {
@@ -33,3 +36,18 @@ def show_registrated_user1(request, login):
         'passwords': passwords
     }
     return render(request, 'main/accaunt_user.html', data)
+
+
+class UserCreate(View):
+    def get(self, request):
+        form = RegistrationForm()
+        return render(request, 'main/registration.html', context={'form': form})
+
+    def post(self, request):
+        form = RegistrationForm(request.POST)
+
+        if form.is_valid():
+            new_user = form.save()
+            return redirect(new_user)
+        return render(request, 'main/registration.html', context={'form': form})
+
