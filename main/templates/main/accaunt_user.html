@@ -15,6 +15,7 @@
 
 {% block buttons %}
     <a href="{{user.get_absolute_url}}" class="btn btn-danger">generate </a>
+    <a href="{% url 'new_password' login=user.login %}" class="btn btn-danger">generate with save button</a>
 {% endblock %}
 
 {% block accaunt %}

@@ -4,12 +4,15 @@ from .models import User, Password
 from django.core.exceptions import ValidationError
 
 
-class RegistrationForm(forms.Form):
-    login = forms.CharField(max_length=50)
-    password = forms.CharField(max_length=50)
+class RegistrationForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['login', 'password']
 
-    login.widget.attrs.update({'class': 'form-control'})
-    password.widget.attrs.update({'class': 'form-control'})
+        widgets = {
+            'login': forms.TextInput(attrs={'class': 'form-control'}),
+            'password': forms.TextInput(attrs={'class': 'form-control'})
+        }
 
     def clean_login(self):
         new_login = self.cleaned_data['login']
@@ -19,9 +22,14 @@ class RegistrationForm(forms.Form):
             raise ValidationError('This login has already used')
         return new_login
 
-    def save(self):
-        new_user = User.objects.create(
-            login=self.cleaned_data['login'],
-            password=self.cleaned_data['password']
-        )
-        return new_user
+
+class PasswordForm(forms.ModelForm):
+    class Meta:
+        model = Password
+        fields = ['password', 'user', 'url']
+
+        widgets = {
+            'user': forms.TextInput(attrs={'class': 'form-control'}),
+            'password': forms.TextInput(attrs={'class': 'form-control'}),
+            'url': forms.TextInput(attrs={'class': 'form-control'})
+        }
