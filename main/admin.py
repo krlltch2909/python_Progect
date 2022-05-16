@@ -7,7 +7,7 @@ from .form import AccauntUserCreationForm, AccauntUserChangeForm
 # Register your models here.
 
 
-admin.site.register(AccauntUser)
+admin.site.register(AccauntUser, UserAdmin)
 
 
 class CustomUserAdmin(UserAdmin):

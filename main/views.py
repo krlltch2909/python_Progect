@@ -5,13 +5,16 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 from main.generate import gen
-from django.contrib.auth import authenticate, login , logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model
 
 from .options import grt_options
 from .form import PasswordForm, AccauntUserCreationForm
 
+
+# AccauntUserCreationForm
 
 # метод для генерации пароля НЕ авторизированного пользовател
 def show(request):
@@ -46,27 +49,30 @@ def logout_user(request):
     return redirect('main_page')
 
 
-def registrate_user(request):
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password1']
+# def registrate_user(request):
+#     if request.method == "POST":
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password1']
+#             user = authenticate(username=username, password=password)
+#             login(request, user)
+#             messages.success(request, "Regestration Successfull")
+#             return render('user_page', {'username': username, 'user': user})
+#     else:
+#         form = UserCreationForm()
+#     return render(request, 'main/registration.html', {'form': form})
 
-    return render(request, 'main/registration.html')
 
-
-
-
-class UserPasswordGenerator(CreateView, ):
+class UserPasswordGenerator(CreateView):
     form_class = PasswordForm
     template_name = 'main/password_gen.html'
 
     def get(self, request, *args, **kwargs):
         form = PasswordForm(request.GET)
 
-        return render(request, self.template_name, context={'form': form,})
+        return render(request, self.template_name, context={'form': form, })
 
     def post(self, request, *args, **kwargs):
         form = PasswordForm(request.POST)
@@ -76,7 +82,6 @@ class UserPasswordGenerator(CreateView, ):
             return redirect(self.template_name)
         else:
             return render(request, self.template_name, {'form': form})
-
 
 class RegistrationUser(CreateView):
     form_class = AccauntUserCreationForm

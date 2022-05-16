@@ -17,7 +17,7 @@
             <li class="breadcrumb-item active" aria-current="page">Registration</li>
         </ol>
     </nav>
-    <form action="{% url 'registration' %}" method="post">
+    <form action="{% url 'registrat_user' %}" method="post">
         {% csrf_token %}
         {% for field in form %}
             <div class="form-group">
@@ -32,7 +32,6 @@
             </div>
         {% endfor %}
         <button type="submit" class="btn btn-primary">Sign in</button>
-
     </form>
 </body>
 </html>
