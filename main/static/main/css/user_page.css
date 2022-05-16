@@ -1,0 +1,51 @@
+#body{
+    background: dimgrey;
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  top: 7em;
+  left: 15px;
+}
+
+/* Control the right side */
+.right {
+  top: 7em;
+  right: 7px;
+}
+
+#table{
+  border-radius: 15px;
+  border-bottom-width: 7px;
+  border-bottom-color: lightslategray;
+  background: gainsboro;
+}
+
+
+#check_group{
+  margin-left: 17em;
+  width: 12em;
+  border-radius: 15px;
+  border-bottom-width: 7px;
+  border-bottom-color: lightslategray;
+  background: gainsboro;
+}
+
+#forma{
+  width: 30em;
+  border-radius: 10px;
+  border-top-width: 7px;
+  border-top-color: lightslategray;
+  border-bottom-color: lightslategray;
+  background: gainsboro;
+}

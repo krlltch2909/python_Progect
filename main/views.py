@@ -1,79 +1,95 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.views import View
+from django.urls import reverse_lazy
+
+from django.views.generic import CreateView
 
 from main.generate import gen
-from .models import Password, User
-from .user_generator import usr_genert
+from django.contrib.auth import authenticate, login , logout
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+
 from .options import grt_options
-from .form import RegistrationForm, PasswordForm
-from django.contrib.auth.mixins import LoginRequiredMixin
+from .form import PasswordForm, AccauntUserCreationForm
 
 
-# метод для генерации пароля НЕ авторизированного пользователя
+# метод для генерации пароля НЕ авторизированного пользовател
 def show(request):
-    try:
-        User.objects.create(login='root', password='qwerty')
-        User.objects.creat(login ='root2',password='qwerty2')
-    except:
-        pass
-    users = User.objects.all()
-    passwords = Password.objects.all()
     data = {
-        'passwords': passwords,
-        'users': users,
         'options': grt_options(),
         'gen': gen(),
     }
     return render(request, 'main/main_page.html', data)
 
 
-# метод для генерации пароля авторизированного пользователя(новый, вызывается при входе в аккаунт)
-
-def show_registrated_user(request, login):
-    user = User.objects.get(login=login)
-    passwords = Password.objects.filter(user=user.id)
-    data = {
-        'user': user,
-        #'gen': usr_genert(user.id),
-        'gen': gen(),
-        'options': grt_options(),
-        'passwords': passwords
-    }
-    return render(request, 'main/accaunt_user.html', data)
-
-
-class UserCreate(View):
-    def get(self, request):
-        form = RegistrationForm()
-        return render(request, 'main/registration.html', context={'form': form})
-
-    def post(self, request):
-        form = RegistrationForm(request.POST)
-
-        if form.is_valid():
-            new_user = form.save()
-            return redirect(new_user)
-        return render(request, 'main/registration.html', context={'form': form})
+def login_user(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        print(user)
+        if user is not None:
+            login(request, user)
+            return redirect('user_page', {'username': username, 'user': user})
+            # Redirect to a success page.
+        else:
+            messages.success(request, "Error in login or password")
+            return redirect('login_user')
+            # Return an 'invalid login' error message.
+    else:
+        return render(request, 'main/login.html', {})
 
 
-class PasswordGeneration(LoginRequiredMixin, View):
-    def get(self, request, login):
-        user = User.objects.get(login=login)
-        passw = Password(password=gen(), user=user.id, url="")
-        passwords = Password.objects.filter(user=user.id)
-        form = PasswordForm(instance=passw)
-        return render(request, 'main/password_gen.html', context={'form': form,
-                                                                  'user': user,
-                                                                  'passwords': passwords,
-                                                                  'options': grt_options()})
+def logout_user(request):
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    return redirect('main_page')
 
-    def post(self, request, login):
-        user = User.objects.get(login=login)
-        form = PasswordForm(request.POST)
 
+def registrate_user(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(user.get_absolute_url())
-            #return render(request, 'main/password_gen.html', context={'form': form, 'user': user})
-        return render(request, 'main/password_gen.html', context={'form': form, 'user': user})
-    raise_exception = True
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+
+    return render(request, 'main/registration.html')
+
+
+
+
+class UserPasswordGenerator(CreateView, ):
+    form_class = PasswordForm
+    template_name = 'main/password_gen.html'
+
+    def get(self, request, *args, **kwargs):
+        form = PasswordForm(request.GET)
+
+        return render(request, self.template_name, context={'form': form,})
+
+    def post(self, request, *args, **kwargs):
+        form = PasswordForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.save()
+            return redirect(self.template_name)
+        else:
+            return render(request, self.template_name, {'form': form})
+
+
+class RegistrationUser(CreateView):
+    form_class = AccauntUserCreationForm
+    success_url = reverse_lazy('main_page')
+    template_name = 'main/registration.html'
+
+    def post(self, request, *args, **kwargs):
+        form = AccauntUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            username = form.cleaned_data['username']
+            user.save()
+
+            return redirect('user_page', username=username)
+        else:
+            return render(request, self.template_name, {'form': form})

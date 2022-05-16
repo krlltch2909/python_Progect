@@ -1,35 +1,29 @@
 from django import forms
 
-from .models import User, Password
-from django.core.exceptions import ValidationError
+from .models import Password, AccauntUser
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 
-class RegistrationForm(forms.ModelForm):
+class AccauntUserCreationForm(UserCreationForm):
     class Meta:
-        model = User
-        fields = ['login', 'password']
+        model = AccauntUser
+        fields = ('username',)
 
-        widgets = {
-            'login': forms.TextInput(attrs={'class': 'form-control'}),
-            'password': forms.TextInput(attrs={'class': 'form-control'})
-        }
 
-    def clean_login(self):
-        new_login = self.cleaned_data['login']
-        if new_login == 'registration':
-            raise ValidationError('Incorrect login')
-        if User.objects.filter(login=new_login).exists():
-            raise ValidationError('This login has already used')
-        return new_login
+class AccauntUserChangeForm(UserChangeForm):
+    class Meta:
+        model = AccauntUser
+        fields = ('username', 'password')
 
 
 class PasswordForm(forms.ModelForm):
     class Meta:
         model = Password
-        fields = ['password', 'user', 'url']
+        fields = ['password', 'url', 'user']
 
         widgets = {
-            'user': forms.TextInput(attrs={'class': 'form-control'}),
+            #user': forms.TextInput(attrs={'class': 'form-control'}),
             'password': forms.TextInput(attrs={'class': 'form-control'}),
             'url': forms.TextInput(attrs={'class': 'form-control'})
         }
+
