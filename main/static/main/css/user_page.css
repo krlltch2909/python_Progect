@@ -1,6 +1,9 @@
 #body{
-    background: dimgrey;
+    background: darkgray;
 }
+/*body{*/
+/*    background: firebrick;*/
+/*}*/
 
 .split {
   height: 100%;
@@ -49,3 +52,11 @@
   border-bottom-color: lightslategray;
   background: gainsboro;
 }
+
+#length{
+  width: 12em;
+  margin-left: 17em;
+}
+/*#navigation{*/
+/*  margin-top: 5em;*/
+/*}*/

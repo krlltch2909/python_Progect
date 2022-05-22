@@ -1,5 +1,8 @@
 form{
-    margin-left: 27em;
+    margin-left: 46em;
     margin-top: 5em;
     width: 30em;
+}
+#body{
+    background: darkgray;
 }

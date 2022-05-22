@@ -14,24 +14,24 @@ class CustomUserAdmin(UserAdmin):
     model = AccauntUser
     add_form = AccauntUserCreationForm
 
-    # add_fieldsets = (
-    #     *UserAdmin.add_fieldsets, (
-    #         'CustomFields', {
-    #             'fields': (
-    #                 'login'
-    #                 'password'
-    #             )
-    #         }
-    #     )
-    # )
-    #
-    # fieldsets = (
-    #     *UserAdmin.fieldsets, (
-    #         'CustomFields', {
-    #             'fields': (
-    #                 'login'
-    #                 'password'
-    #             )
-    #         }
-    #     )
-    # )
+    add_fieldsets = (
+        *UserAdmin.add_fieldsets, (
+            'CustomFields', {
+                'fields': (
+                    'login'
+                    'password'
+                )
+            }
+        )
+    )
+
+    fieldsets = (
+        *UserAdmin.fieldsets, (
+            'CustomFields', {
+                'fields': (
+                    'login'
+                    'password'
+                )
+            }
+        )
+    )

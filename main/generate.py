@@ -1,21 +1,20 @@
 import random
-
-from main import options
-
-
-def gen():
+def gen(request):
     abc = "qwertyuiopasdfghjklzxcvbnm"
     rez = ""
-    if options.special_symbol is True:
+    if request.session['spec_sym'] == ['on']:
         abc += "!:;.,'|[]{}"
-    if options.math_symbol is True:
+    if request.session['math_sym'] == ['on']:
         abc += "+-=/*<>"
-    for i in range(options.length):
+    if request.session['numbers'] == ['on']:
+        abc += "1234567890"
+    n = request.session['length']
+    for i in range(int(n[0])):
         rez += abc[random.randint(0, len(abc) - 1)]
 
     # редактирования сгенерированного пароля
 
-    if options.high_register is True:
+    if request.session['high_reg'] == ['on']:
         rez = to_high_register(rez)
     return rez
 

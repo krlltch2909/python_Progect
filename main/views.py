@@ -1,28 +1,73 @@
-from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-
 from django.views.generic import CreateView
-
 from main.generate import gen
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import get_user_model
-
-from .options import grt_options
+from .models import Password, AccauntUser
 from .form import PasswordForm, AccauntUserCreationForm
+from .encryption import cript, decript
 
-
-# AccauntUserCreationForm
-
-# метод для генерации пароля НЕ авторизированного пользовател
 def show(request):
+    request.session['high_reg'] = ['on']
+    request.session['math_sym'] = ['']
+    request.session['spec_sym'] = ['']
+    request.session['numbers'] = ['on']
+    request.session['length'] = ['8']
     data = {
-        'options': grt_options(),
-        'gen': gen(),
+        'gen': gen(request)
     }
     return render(request, 'main/main_page.html', data)
+
+
+def password_gen(request, username,):
+    gen_pas = gen(request)
+    # save_checbox = {
+    #     'high_reg': False,
+    #     'math_sym': False,
+    #     'spec_sym': False,
+    #     'numbers': False,
+    # }
+    # if request.session['high_reg'] == ['on']:
+    #     save_checbox['high_reg'] = True
+    # if request.session['high_reg'] == ['on']:
+    #     save_checbox['high_reg'] = True
+    # if request.session['high_reg'] == ['on']:
+    #     save_checbox['high_reg'] = True
+    # if request.session['high_reg'] == ['on']:
+    #     save_checbox['high_reg'] = True
+
+    user = AccauntUser.objects.get(username=AccauntUser.get_username(request.user))
+    passwords_cript = Password.objects.filter(user=user.id)
+
+    form = PasswordForm(initial={'password': gen_pas, 'user': user})
+    if request.method == "POST":
+        if 'generate' in request.POST:
+            request.session['high_reg'] = request.POST.getlist('checkbox1')
+            request.session['math_sym'] = request.POST.getlist('checkbox2')
+            request.session['spec_sym'] = request.POST.getlist('checkbox3')
+            request.session['numbers'] = request.POST.getlist('checkbox4')
+            request.session['length'] = request.POST.getlist('length')
+
+            form = PasswordForm(initial={'password': gen(request), 'user': user})
+            return render(request, 'main/password_gen.html', {
+                'form': form,
+                'username': user,
+                'passwords': passwords_cript,
+            })
+
+        form = PasswordForm(request.POST)
+        if 'save' in request.POST:
+            if form.is_valid():
+                password = form.cleaned_data['password']
+                url = form.cleaned_data['url']
+                Password.objects.create(password=password, url=url, user=user.id)
+                return redirect('user_page', user.username)
+    return render(request, 'main/password_gen.html', {
+        'form': form,
+        'username': user,
+        'passwords': passwords_cript,
+    })
 
 
 def login_user(request):
@@ -45,43 +90,19 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
+    request.session.clear()
     messages.info(request, "Logged out successfully!")
     return redirect('main_page')
 
 
-# def registrate_user(request):
-#     if request.method == "POST":
-#         form = UserCreationForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password1']
-#             user = authenticate(username=username, password=password)
-#             login(request, user)
-#             messages.success(request, "Regestration Successfull")
-#             return render('user_page', {'username': username, 'user': user})
-#     else:
-#         form = UserCreationForm()
-#     return render(request, 'main/registration.html', {'form': form})
+def delit_pass(request, id_pass):
+    print(id_pass)
+    password = Password.objects.get(id=id_pass)
+    password.delete()
+    user = AccauntUser.objects.get(username=AccauntUser.get_username(request.user))
+    messages.info(request, "Logged out successfully!")
+    return redirect('user_page', user.username)
 
-
-class UserPasswordGenerator(CreateView):
-    form_class = PasswordForm
-    template_name = 'main/password_gen.html'
-
-    def get(self, request, *args, **kwargs):
-        form = PasswordForm(request.GET)
-
-        return render(request, self.template_name, context={'form': form, })
-
-    def post(self, request, *args, **kwargs):
-        form = PasswordForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.save()
-            return redirect(self.template_name)
-        else:
-            return render(request, self.template_name, {'form': form})
 
 class RegistrationUser(CreateView):
     form_class = AccauntUserCreationForm
@@ -94,7 +115,7 @@ class RegistrationUser(CreateView):
             user = form.save(commit=False)
             username = form.cleaned_data['username']
             user.save()
-
-            return redirect('user_page', username=username)
+            login(request, user)
+            return redirect('user_page', {'username': username, 'user': user})
         else:
             return render(request, self.template_name, {'form': form})

@@ -4,8 +4,13 @@
     Generator
 {% endblock %}
 
-{% block buttons %}
-    <a href="{% url 'main_page' %}" class="btn btn-danger">generate </a>
-    <a href="{% url 'registrat_user' %}" class="btn btn-danger">registration </a>
-    <a href="{% url 'login_user' %}" class="btn btn-danger">Login </a>
+{% block navigation %}
+    <nav aria-label="breadcrumb" id="navigation_buttons">
+        {% if user.is_authenticated %}
+            <a class="btn btn-danger" href="{% url 'logout_user' %}" id="log_out">logout</a>
+        {% else %}
+            <a href="{% url 'registrat_user' %}" class="btn btn-danger" id="reg">registration </a>
+            <a href="{% url 'login_user' %}" class="btn btn-danger" id="log">Login </a>
+        {% endif %}
+    </nav>
 {% endblock %}
