@@ -1,6 +1,6 @@
 from cryptography.fernet import Fernet
 
-# ключ
+# ключ для примера, при выгрузке обязателен к смене
 cipher_key = b'LNPwLWnYdKxiy1Pb-462LLcAzMF6z37htxB9MNI-asI='
 #
 # cipher_key = Fernet.generate_key()
