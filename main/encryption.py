@@ -1,21 +1,22 @@
+from cryptography.fernet import Fernet
 
-from Crypto.Cipher import AES
-from Crypto.Random import get_random_bytes
+# ключ
+cipher_key = b'LNPwLWnYdKxiy1Pb-462LLcAzMF6z37htxB9MNI-asI='
+#
+# cipher_key = Fernet.generate_key()
 
-data = b"Hello world"
-key = b'6\xeeo\xd4\x92p\x18y\xc3\xbbE\xa5q\xe8I\xc5'
-#key = get_random_bytes(16) # Генерируем ключ шифрования
 
-# Шифрование
-cipher = AES.new(key, AES.MODE_EAX)
-ciphertext, tag = cipher.encrypt_and_digest(data)
-nonce = cipher.nonce
-print(ciphertext)
-print(key)
-print(nonce)
-print(tag)# Зашифрованный текст
+def cript_password(password):
+    cipher = Fernet(cipher_key)
+    encrypted_text = cipher.encrypt(password)
+    print(encrypted_text)
+    return encrypted_text
 
-# Дешифровка
-cipher = AES.new(key, AES.MODE_EAX, nonce)
-data = cipher.decrypt_and_verify(ciphertext, tag)
-print(data)
+
+# Дешифруем
+def decrip_password(ciphertext):
+    cipher = Fernet(cipher_key)
+    decrypted_text = cipher.decrypt(ciphertext)
+    print(decrypted_text)
+    return decrypted_text
+

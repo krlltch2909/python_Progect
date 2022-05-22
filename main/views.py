@@ -6,7 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import Password, AccauntUser
 from .form import PasswordForm, AccauntUserCreationForm
-from .encryption import cript, decript
+from .encryption import cript_password, decrip_password
+
 
 def show(request):
     request.session['high_reg'] = ['on']
@@ -22,25 +23,18 @@ def show(request):
 
 def password_gen(request, username,):
     gen_pas = gen(request)
-    # save_checbox = {
-    #     'high_reg': False,
-    #     'math_sym': False,
-    #     'spec_sym': False,
-    #     'numbers': False,
-    # }
-    # if request.session['high_reg'] == ['on']:
-    #     save_checbox['high_reg'] = True
-    # if request.session['high_reg'] == ['on']:
-    #     save_checbox['high_reg'] = True
-    # if request.session['high_reg'] == ['on']:
-    #     save_checbox['high_reg'] = True
-    # if request.session['high_reg'] == ['on']:
-    #     save_checbox['high_reg'] = True
 
     user = AccauntUser.objects.get(username=AccauntUser.get_username(request.user))
     passwords_cript = Password.objects.filter(user=user.id)
 
-    form = PasswordForm(initial={'password': gen_pas, 'user': user})
+    passwords_decript = []
+    for i in passwords_cript:
+        print(i.password)
+        i.password = (decrip_password(ciphertext=i.password.encode('unicode_escape')).decode('unicode_escape'))
+
+    print(str(passwords_decript))
+
+    form = PasswordForm(initial={'password': gen_pas, 'decript_pass': passwords_decript, 'user': user})
     if request.method == "POST":
         if 'generate' in request.POST:
             request.session['high_reg'] = request.POST.getlist('checkbox1')
@@ -54,6 +48,7 @@ def password_gen(request, username,):
                 'form': form,
                 'username': user,
                 'passwords': passwords_cript,
+                'decript_pass': passwords_decript
             })
 
         form = PasswordForm(request.POST)
@@ -61,12 +56,20 @@ def password_gen(request, username,):
             if form.is_valid():
                 password = form.cleaned_data['password']
                 url = form.cleaned_data['url']
-                Password.objects.create(password=password, url=url, user=user.id)
+                rez = cript_password(password=password.encode('unicode_escape'))
+                print(rez)
+
+                print(rez)
+                print(type(rez))
+                Password.objects.create(url=url,
+                                        password=rez.decode('unicode_escape'),
+                                        user=user.id,)
                 return redirect('user_page', user.username)
     return render(request, 'main/password_gen.html', {
         'form': form,
         'username': user,
         'passwords': passwords_cript,
+        'decript_pass': passwords_decript
     })
 
 
