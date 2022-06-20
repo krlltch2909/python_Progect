@@ -23,11 +23,13 @@ def show(request):
 
 def password_gen(request, username,):
     gen_pas = gen(request)
-
-    user = AccauntUser.objects.get(username=AccauntUser.get_username(request.user))
-    passwords_cript = Password.objects.filter(user=user.id)
-
     passwords_decript = []
+    try:
+        user = AccauntUser.objects.get(username=AccauntUser.get_username(request.user))
+        passwords_cript = Password.objects.filter(user=user.id)
+    except:
+        user = None
+
     for i in passwords_cript:
         print(i.password)
         i.password = (decrip_password(ciphertext=i.password.encode('unicode_escape')).decode('unicode_escape'))
@@ -118,7 +120,7 @@ class RegistrationUser(CreateView):
             user = form.save(commit=False)
             username = form.cleaned_data['username']
             user.save()
-            login(request, user)
+            login(request, user,backend='django.contrib.auth.backends.ModelBackend')
             return redirect('user_page', {'username': username, 'user': user})
         else:
             return render(request, self.template_name, {'form': form})

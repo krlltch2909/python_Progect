@@ -1,0 +1,5 @@
+django
+django-allauth
+cryptography
+psycopg2-binary
+whitenoise

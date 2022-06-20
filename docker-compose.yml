@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    container_name: postgress_paswordgen
+    restart: always
+
+    environment:
+      - POSTGRES_USER=adminka
+      - POSTGRES_PASSWORD=kirka2906
+      - POSTGRES_NAME=db01
+    volumes:
+      - ./postgres/data/db:/var/lib/postgresql/data
+      #PGDATD: /Users/kirill/Desktop/pythonProgect/Python_Progect/postgres/data
+
+  web:
+    build: .
+    container_name: web_password_gen
+    restart: always
+    command: >
+      sh -c " 
+      python manage.py wait_for_bd &&
+      python manage.py migrate &&
+      python manage.py upgrade_sites &&
+      python manage.py collectstatic &&
+      python manage.py runserver 0.0.0.0:8000 "
+
+    environment:
+      - HOST=db
+      - PORT=5432
+      - POSTGRES_USER=adminka
+      - POSTGRES_PASSWORD=kirka2906
+
+      - DEBUG=0
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+volumes:
+  db:

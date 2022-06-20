@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
+#import environ
 from pathlib import Path
 
 from django.contrib.auth import get_user_model
@@ -18,6 +19,11 @@ from django.contrib.auth import get_user_model
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# root = environ.Path(__file__) - 3  # get root of the project
+# env = environ.Env()
+# environ.Env.read_env()  # reading .env file
+# SITE_ROOT = root()
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -25,9 +31,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ambx%dd^s8zi^6f6oj!hyc)jq@(g^gi(m2@t$hk@8-7!o$ki%!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = bool(int(os.environ.get('DEBUG', default=1)))
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'whitenoise.runserver_nostatic',
+
     'django.contrib.sites',
 
     'allauth',
@@ -53,13 +60,17 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 ROOT_URLCONF = 'djangoProject.urls'
 
@@ -89,10 +100,24 @@ WSGI_APPLICATION = 'djangoProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+
+        'HOST': os.environ.get('HOST', default='localhost'),
+        "PORT": "54321",#os.environ.get("PORT", "5432"),
+
+        'USER': os.environ.get('POSTGRES_USER', default='adminka'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', default='kirka2906'),
+        'NAME': os.environ.get('POSTGRES_NAME', default='db01'),
+
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # google accaunts
 
@@ -107,6 +132,7 @@ SOCIALACCOUNT_PROVIDERS = {
             'profile',
             'email',
         ],
+
         'AUTH_PARAMS': {
             'access_type': 'online',
         }
@@ -116,7 +142,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 LOGIN_REDIRECT_URL = '/user'
 LOGOUT_REDIRECT_URL = '/'
-SOCIALACCOUNT_LOGIN_ON_GET=True
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -153,15 +179,20 @@ USE_TZ = True
 
 AUTH_USER_MODEL = 'main.AccauntUser'
 
-SITE_ID = 3
+# SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-#STATICFILES_DIRS = [BASE_DIR / "main/static",]
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "main/static")]
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
