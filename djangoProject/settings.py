@@ -40,6 +40,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     # my apps
     'main',
+    'apiPasssword',
     # base apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,11 +52,12 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
 
     'django.contrib.sites',
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -103,7 +105,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
 
         'HOST': os.environ.get('HOST', default='localhost'),
-        "PORT": "54321",#os.environ.get("PORT", "5432"),
+        "PORT": "5432",#os.environ.get("PORT", "5432"),
 
         'USER': os.environ.get('POSTGRES_USER', default='adminka'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', default='kirka2906'),

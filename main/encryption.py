@@ -9,7 +9,7 @@ cipher_key = b'LNPwLWnYdKxiy1Pb-462LLcAzMF6z37htxB9MNI-asI='
 def cript_password(password):
     cipher = Fernet(cipher_key)
     encrypted_text = cipher.encrypt(password)
-    print(encrypted_text)
+    #print(encrypted_text)
     return encrypted_text
 
 
@@ -17,6 +17,6 @@ def cript_password(password):
 def decrip_password(ciphertext):
     cipher = Fernet(cipher_key)
     decrypted_text = cipher.decrypt(ciphertext)
-    print(decrypted_text)
+   # print(decrypted_text)
     return decrypted_text
 

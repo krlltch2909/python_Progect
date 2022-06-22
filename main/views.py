@@ -31,10 +31,7 @@ def password_gen(request, username,):
         user = None
 
     for i in passwords_cript:
-        print(i.password)
         i.password = (decrip_password(ciphertext=i.password.encode('unicode_escape')).decode('unicode_escape'))
-
-    print(str(passwords_decript))
 
     form = PasswordForm(initial={'password': gen_pas, 'decript_pass': passwords_decript, 'user': user})
     if request.method == "POST":
@@ -53,16 +50,14 @@ def password_gen(request, username,):
                 'decript_pass': passwords_decript
             })
 
+
         form = PasswordForm(request.POST)
         if 'save' in request.POST:
             if form.is_valid():
                 password = form.cleaned_data['password']
                 url = form.cleaned_data['url']
                 rez = cript_password(password=password.encode('unicode_escape'))
-                print(rez)
 
-                print(rez)
-                print(type(rez))
                 Password.objects.create(url=url,
                                         password=rez.decode('unicode_escape'),
                                         user=user.id,)

@@ -18,6 +18,6 @@ class Command(BaseCommand):
                 db_up = True
             except (Psycopg20pError, OperationalError):
                 self.stdout.write("wait, dataBase is starting")
-                time.sleep(1)
+                time.sleep(5)
 
-            self.stdout.write('DAtaBase ready')
+        self.stdout.write('DAtaBase ready')
