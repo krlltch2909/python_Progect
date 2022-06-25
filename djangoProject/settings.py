@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
     'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -65,7 +67,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -104,12 +106,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
 
-        'HOST': os.environ.get('HOST', default='localhost'),
-        "PORT": "5432",#os.environ.get("PORT", "5432"),
+        'HOST': 'localhost', #os.environ.get('HOST', default='localhost'),
+        "PORT": '54321', #os.environ.get("PORT", "5432"),#"5432",
 
-        'USER': os.environ.get('POSTGRES_USER', default='adminka'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', default='kirka2906'),
-        'NAME': os.environ.get('POSTGRES_NAME', default='db01'),
+        'USER': 'adminka', # os.environ.get('POSTGRES_USER', default='adminka'),
+        'PASSWORD': "kirka2906", # os.environ.get('POSTGRES_PASSWORD', default='kirka2906'),
+        'NAME': 'db', # os.environ.get('POSTGRES_NAME', default='db'),
 
     }
 }
@@ -200,3 +202,27 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
+
+
+DJOSER = {
+    #'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
+    #'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': False,
+    'SERIALIZERS': {},
+}

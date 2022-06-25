@@ -5,20 +5,23 @@ services:
     image: postgres:latest
     container_name: postgress_paswordgen
     #restart: always
-
+#
     environment:
-      - HOST=db01
-      - PORT=5432
-      - POSTGRES_USER=adminka
-      - POSTGRES_PASSWORD=kirka2906
-      - POSTGRES_NAME=db01
+#      - POSTGRES_USER=adminka
+#      - POSTGRES_PASSWORD=kirka2906
+#      - POSTGRES_NAME=db
+      PGDATA: /var/lib/postgresql/data/db/
+      POSTGRES_PASSWORD: kirka2906
+      POSTGRES_USER: adminka
+      POSTGRES_DB: db
+
     volumes:
-      - ./postgres/data/db:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data/
 
   web:
     build: .
     container_name: web_password_gen
-    restart: always
+    #restart: always
     command: >
       sh -c " 
       python manage.py wait_for_bd &&
@@ -27,17 +30,29 @@ services:
       python manage.py collectstatic &&
       python manage.py runserver 0.0.0.0:8000 "
 
-    environment:
-      - HOST=db
-      - POSTGRES_USER=adminka
-      - POSTGRES_PASSWORD=kirka2906
-      - POSTGRES_NAME=db01
+    expose:
+      - 8000
 
-      - DEBUG=0
-    ports:
-      - "8000:8000"
+    environment:
+
+      - DEBUG=1
+
     depends_on:
       - db
 
+
+  nginx:
+    image: nginx
+
+    container_name: nginx
+    volumes:
+    - ./hosts:/etc/nginx/
+    - ./logs/:/etc/nginx/logs/
+    ports:
+    - "80:80"
+
+    depends_on:
+      - web
 volumes:
-  db:
+  postgres :
+  nginx.conf:

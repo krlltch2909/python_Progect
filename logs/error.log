@@ -1,0 +1,180 @@
+2022/06/24 08:24:38 [notice] 1#1: using the "epoll" event method
+2022/06/24 08:24:38 [notice] 1#1: using the "epoll" event method
+2022/06/24 08:24:38 [notice] 1#1: nginx/1.23.0
+2022/06/24 08:24:38 [notice] 1#1: nginx/1.23.0
+2022/06/24 08:24:38 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 08:24:38 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 08:24:38 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 08:24:38 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 08:24:38 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 08:24:38 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 08:24:38 [notice] 1#1: start worker processes
+2022/06/24 08:24:38 [notice] 1#1: start worker processes
+2022/06/24 08:24:38 [notice] 1#1: start worker process 23
+2022/06/24 08:24:38 [notice] 1#1: start worker process 23
+2022/06/24 08:26:02 [notice] 1#1: using the "epoll" event method
+2022/06/24 08:26:02 [notice] 1#1: using the "epoll" event method
+2022/06/24 08:26:02 [notice] 1#1: nginx/1.23.0
+2022/06/24 08:26:02 [notice] 1#1: nginx/1.23.0
+2022/06/24 08:26:02 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 08:26:02 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 08:26:02 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 08:26:02 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 08:26:02 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 08:26:02 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 08:26:02 [notice] 1#1: start worker processes
+2022/06/24 08:26:02 [notice] 1#1: start worker processes
+2022/06/24 08:26:02 [notice] 1#1: start worker process 22
+2022/06/24 08:26:02 [notice] 1#1: start worker process 22
+2022/06/24 08:28:46 [notice] 1#1: using the "epoll" event method
+2022/06/24 08:28:46 [notice] 1#1: using the "epoll" event method
+2022/06/24 08:28:46 [notice] 1#1: nginx/1.23.0
+2022/06/24 08:28:46 [notice] 1#1: nginx/1.23.0
+2022/06/24 08:28:46 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 08:28:46 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 08:28:46 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 08:28:46 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 08:28:46 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 08:28:46 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 08:28:46 [notice] 1#1: start worker processes
+2022/06/24 08:28:46 [notice] 1#1: start worker processes
+2022/06/24 08:28:46 [notice] 1#1: start worker process 23
+2022/06/24 08:28:46 [notice] 1#1: start worker process 23
+2022/06/24 09:25:46 [notice] 1#1: using the "epoll" event method
+2022/06/24 09:25:46 [notice] 1#1: using the "epoll" event method
+2022/06/24 09:25:46 [notice] 1#1: nginx/1.23.0
+2022/06/24 09:25:46 [notice] 1#1: nginx/1.23.0
+2022/06/24 09:25:46 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 09:25:46 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 09:25:46 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 09:25:46 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 09:25:46 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 09:25:46 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 09:25:46 [notice] 1#1: start worker processes
+2022/06/24 09:25:46 [notice] 1#1: start worker processes
+2022/06/24 09:25:46 [notice] 1#1: start worker process 23
+2022/06/24 09:25:46 [notice] 1#1: start worker process 23
+2022/06/24 09:41:49 [notice] 1#1: using the "epoll" event method
+2022/06/24 09:41:49 [notice] 1#1: using the "epoll" event method
+2022/06/24 09:41:49 [notice] 1#1: nginx/1.23.0
+2022/06/24 09:41:49 [notice] 1#1: nginx/1.23.0
+2022/06/24 09:41:49 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 09:41:49 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 09:41:49 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 09:41:49 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 09:41:49 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 09:41:49 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 09:41:49 [notice] 1#1: start worker processes
+2022/06/24 09:41:49 [notice] 1#1: start worker processes
+2022/06/24 09:41:49 [notice] 1#1: start worker process 25
+2022/06/24 09:41:49 [notice] 1#1: start worker process 25
+2022/06/24 11:06:25 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:06:25 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:06:25 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:06:25 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:06:25 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:06:25 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:06:25 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:06:25 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:06:25 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:06:25 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:06:25 [notice] 1#1: start worker processes
+2022/06/24 11:06:25 [notice] 1#1: start worker processes
+2022/06/24 11:06:25 [notice] 1#1: start worker process 22
+2022/06/24 11:06:25 [notice] 1#1: start worker process 22
+2022/06/24 11:13:30 [info] 22#22: *4 client 192.168.0.1 closed keepalive connection
+2022/06/24 11:13:30 [info] 22#22: *5 client 192.168.0.1 closed keepalive connection
+2022/06/24 11:13:30 [info] 22#22: *12 client 192.168.0.1 closed keepalive connection
+2022/06/24 11:13:30 [info] 22#22: *6 client 192.168.0.1 closed keepalive connection
+2022/06/24 11:13:30 [info] 22#22: *10 client 192.168.0.1 closed keepalive connection
+2022/06/24 11:14:00 [info] 22#22: *1 client 192.168.0.1 closed keepalive connection
+2022/06/24 11:15:12 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:15:12 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:15:12 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:15:12 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:15:12 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:15:12 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:15:12 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:15:12 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:15:12 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:15:12 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:15:12 [notice] 1#1: start worker processes
+2022/06/24 11:15:12 [notice] 1#1: start worker processes
+2022/06/24 11:15:12 [notice] 1#1: start worker process 22
+2022/06/24 11:15:12 [notice] 1#1: start worker process 22
+2022/06/24 11:15:52 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:15:52 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:15:52 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:15:52 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:15:52 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:15:52 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:15:52 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:15:52 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:15:52 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:15:52 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:15:52 [notice] 1#1: start worker processes
+2022/06/24 11:15:52 [notice] 1#1: start worker processes
+2022/06/24 11:15:52 [notice] 1#1: start worker process 24
+2022/06/24 11:15:52 [notice] 1#1: start worker process 24
+2022/06/24 11:19:08 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:19:08 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:19:08 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:19:08 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:19:08 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:19:08 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:19:08 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:19:08 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:19:08 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:19:08 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:19:08 [notice] 1#1: start worker processes
+2022/06/24 11:19:08 [notice] 1#1: start worker processes
+2022/06/24 11:19:08 [notice] 1#1: start worker process 23
+2022/06/24 11:19:08 [notice] 1#1: start worker process 23
+2022/06/24 11:20:37 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:20:37 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:20:37 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:20:37 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:20:37 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:20:37 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:20:37 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:20:37 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:20:37 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:20:37 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:20:37 [notice] 1#1: start worker processes
+2022/06/24 11:20:37 [notice] 1#1: start worker processes
+2022/06/24 11:20:37 [notice] 1#1: start worker process 23
+2022/06/24 11:20:37 [notice] 1#1: start worker process 23
+2022/06/24 11:30:38 [info] 23#23: *1 client 192.168.48.1 closed keepalive connection
+2022/06/24 11:31:10 [info] 23#23: *6 client timed out (110: Connection timed out) while waiting for request, client: 192.168.48.1, server: 0.0.0.0:80
+2022/06/24 11:32:15 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:32:15 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:32:15 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:32:15 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:32:15 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:32:15 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:32:15 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:32:15 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:32:15 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:32:15 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:32:15 [notice] 1#1: start worker processes
+2022/06/24 11:32:15 [notice] 1#1: start worker processes
+2022/06/24 11:32:15 [notice] 1#1: start worker process 23
+2022/06/24 11:32:15 [notice] 1#1: start worker process 23
+2022/06/24 11:33:46 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:33:46 [notice] 1#1: using the "epoll" event method
+2022/06/24 11:33:46 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:33:46 [notice] 1#1: nginx/1.23.0
+2022/06/24 11:33:46 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:33:46 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/06/24 11:33:46 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:33:46 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2022/06/24 11:33:46 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:33:46 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/06/24 11:33:46 [notice] 1#1: start worker processes
+2022/06/24 11:33:46 [notice] 1#1: start worker processes
+2022/06/24 11:33:46 [notice] 1#1: start worker process 23
+2022/06/24 11:33:46 [notice] 1#1: start worker process 23
+2022/06/24 11:34:57 [info] 23#23: *1 client 192.168.96.1 closed keepalive connection
+2022/06/24 11:38:41 [info] 23#23: *6 client 192.168.96.1 closed keepalive connection
+2022/06/24 11:40:14 [info] 23#23: *22 client 192.168.96.1 closed keepalive connection
+2022/06/24 14:10:15 [info] 23#23: *57 client 192.168.96.1 closed keepalive connection

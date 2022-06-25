@@ -32,3 +32,5 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = AccauntUser
         fields = ['id', 'username', 'password', 'data']
+
+
