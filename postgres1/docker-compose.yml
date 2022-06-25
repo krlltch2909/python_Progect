@@ -9,8 +9,8 @@ services:
     environment:
       POSTGRES_PASSWORD: kirka2906
       POSTGRES_USER: adminka
-      POSTGRES_DB: db01
-      PGDATD: /Users/kirill/Desktop/pythonProgect/Python_Progect/postgres/data/
+      POSTGRES_DB: db
+      PGDATD: /Users/kirill/Desktop/pythonProgect/Python_Progect/postgres1/data/
      # POSTGRES_INITDB_ARGS: -A mb5
     ports:
       - 54321:5432
