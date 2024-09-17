@@ -7,6 +7,7 @@ class Password(models.Model):
     url = models.CharField(max_length=200, blank=True, db_index=True)
     password = models.CharField(max_length=255, db_index=True)
     user = models.IntegerField(db_index=True)
+
     data = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -8,6 +8,8 @@ class PasswordSerializer(serializers.ModelSerializer):
         model = Password
         fields = ['id', 'user', 'url','password', 'data']
 
+
+
     def create(self, validated_data):
         cript_pass = str(cript_password(bytes(validated_data['password'],
                                               'unicode_escape')))[2:]
